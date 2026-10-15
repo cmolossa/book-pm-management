@@ -10,14 +10,13 @@ import Stack from '@mui/material/Stack';
 import ExploreIcon from '@mui/icons-material/Explore';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import { tokens } from '../theme';
 
 /**
  * Home tab — welcome message, Smart Gap Finder intro card with launch button,
- * and a "We miss you" banner when the user has no recent booking.
+ * The "We miss you" pop-up is managed by App.jsx.
  */
-export default function Home({ onOpenGapFinder, hasRecentBooking, simulateNoBooking, onToggleSimulate }) {
+export default function Home({ onOpenGapFinder, simulateNoBooking, onToggleSimulate }) {
   return (
     <Box sx={{ maxWidth: 600, mx: 'auto', px: 2, py: 3, pb: 1 }}>
       {/* Welcome */}
@@ -27,41 +26,6 @@ export default function Home({ onOpenGapFinder, hasRecentBooking, simulateNoBook
       <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
         Welcome to York U Fitness — your companion for fitting workouts into a busy commuter schedule.
       </Typography>
-
-      {/* "We miss you" banner — shown when no booking in last 7 days */}
-      {(!hasRecentBooking || simulateNoBooking) && (
-        <Card
-          sx={{
-            mb: 3,
-            borderColor: tokens.yorkRed,
-            borderWidth: 1.5,
-            backgroundColor: tokens.redDim08,
-            boxShadow: 'none',
-          }}
-        >
-          <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 1.5, py: 2, '&:last-child': { pb: 2 } }}>
-            <WarningAmberIcon sx={{ color: tokens.yorkRed, fontSize: 28, flexShrink: 0 }} />
-            <Box sx={{ flex: 1 }}>
-              <Typography variant="subtitle1" sx={{ fontWeight: 600, fontSize: '0.95rem' }}>
-                We miss you!
-              </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                Have you seen the slots available?
-              </Typography>
-              <Button
-                variant="contained"
-                size="small"
-                startIcon={<ExploreIcon />}
-                onClick={onOpenGapFinder}
-                id="banner-gap-finder-btn"
-                sx={{ minHeight: 40 }}
-              >
-                Find a slot
-              </Button>
-            </Box>
-          </CardContent>
-        </Card>
-      )}
 
       {/* Smart Gap Finder intro card */}
       <Card sx={{ mb: 3 }}>
@@ -111,7 +75,7 @@ export default function Home({ onOpenGapFinder, hasRecentBooking, simulateNoBook
             Demo: simulate "no recent booking"
           </Typography>
           <Typography variant="caption" color="text.secondary">
-            Toggles the "We miss you" banner for demo purposes.
+            Toggles the "We miss you" pop-up for demo purposes.
           </Typography>
         </Box>
         <Switch
