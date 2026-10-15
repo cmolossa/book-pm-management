@@ -1,143 +1,105 @@
 import { createTheme } from '@mui/material/styles';
-import { brand } from './brand';
+import brand from './brand';
 
-/**
- * Design tokens — a dark, single-accent theme inspired by the book cover.
- * "A quiet control panel at night." The accent color comes from the active
- * brand (Pulse violet by default; see brand.js).
- */
+const YORK_RED = brand.accent;
+const YORK_RED_BRIGHT = brand.accentBright;
+const YORK_RED_RGB = brand.accentRGB;
 
-const VIOLET = brand.accent;
-const VIOLET_BRIGHT = brand.accentBright;
-const BORDER_VIOLET = `rgba(${brand.accentRGB},0.22)`;
-const GLOW_VIOLET = `rgba(${brand.accentBrightRGB},0.30)`;
+const BORDER_RED = `rgba(${YORK_RED_RGB},0.18)`;
+const RED_DIM08 = `rgba(${YORK_RED_RGB},0.08)`;
+const RED_DIM12 = `rgba(${YORK_RED_RGB},0.12)`;
 
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
     background: {
-      default: '#0A0A0F',
-      paper: '#14141C',
+      default: '#FFFFFF',
+      paper: '#FFFFFF',
     },
     primary: {
-      main: VIOLET,
-      light: VIOLET_BRIGHT,
+      main: YORK_RED,
+      light: YORK_RED_BRIGHT,
+      contrastText: '#FFFFFF',
+    },
+    secondary: {
+      main: '#1A1A2E',
     },
     text: {
-      primary: '#F5F5FA',
-      secondary: '#8E8EA0',
+      primary: '#1A1A2E',
+      secondary: '#5C5C6F',
     },
-    divider: BORDER_VIOLET,
+    divider: 'rgba(0,0,0,0.08)',
+    success: { main: '#2E7D32', light: '#4CAF50', contrastText: '#FFFFFF' },
+    warning: { main: '#ED6C02', light: '#FF9800', contrastText: '#FFFFFF' },
+    error: { main: '#D32F2F', contrastText: '#FFFFFF' },
+    info: { main: '#0277BD', contrastText: '#FFFFFF' },
   },
   typography: {
     fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
-    h1: {
-      fontFamily: '"Space Grotesk", sans-serif',
-      fontWeight: 700,
-      textTransform: 'uppercase',
-      letterSpacing: '0.12em',
-    },
-    h2: {
-      fontFamily: '"Space Grotesk", sans-serif',
-      fontWeight: 700,
-      textTransform: 'uppercase',
-      letterSpacing: '0.12em',
-    },
-    h3: {
-      fontFamily: '"Space Grotesk", sans-serif',
-      fontWeight: 600,
-      textTransform: 'uppercase',
-      letterSpacing: '0.12em',
-    },
-    h4: {
-      fontFamily: '"Space Grotesk", sans-serif',
-      fontWeight: 600,
-      textTransform: 'uppercase',
-      letterSpacing: '0.12em',
-    },
-    h5: {
-      fontFamily: '"Space Grotesk", sans-serif',
-      fontWeight: 600,
-      textTransform: 'uppercase',
-      letterSpacing: '0.12em',
-    },
-    h6: {
-      fontFamily: '"Space Grotesk", sans-serif',
-      fontWeight: 600,
-      textTransform: 'uppercase',
-      letterSpacing: '0.12em',
-    },
-    subtitle1: {
-      fontFamily: '"Space Grotesk", sans-serif',
-      fontWeight: 500,
-      letterSpacing: '0.06em',
-    },
-    button: {
-      fontFamily: '"Space Grotesk", sans-serif',
-      fontWeight: 600,
-      letterSpacing: '0.08em',
-    },
+    h1: { fontWeight: 700, fontSize: '2rem', letterSpacing: '-0.01em' },
+    h2: { fontWeight: 700, fontSize: '1.6rem', letterSpacing: '-0.01em' },
+    h3: { fontWeight: 600, fontSize: '1.35rem' },
+    h4: { fontWeight: 600, fontSize: '1.15rem' },
+    h5: { fontWeight: 600, fontSize: '1rem' },
+    h6: { fontWeight: 600, fontSize: '0.9rem' },
+    subtitle1: { fontWeight: 500, fontSize: '0.95rem' },
+    subtitle2: { fontWeight: 500, fontSize: '0.85rem', color: '#5C5C6F' },
+    body1: { fontSize: '0.95rem', lineHeight: 1.5 },
+    body2: { fontSize: '0.85rem', lineHeight: 1.5 },
+    button: { fontWeight: 600, letterSpacing: '0.02em', textTransform: 'none', fontSize: '0.9rem' },
   },
-  shape: {
-    borderRadius: 12,
-  },
+  shape: { borderRadius: 14 },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundColor: '#0A0A0F',
-          // Subtle circuit-grid background
-          backgroundImage: `
-            linear-gradient(${BORDER_VIOLET} 1px, transparent 1px),
-            linear-gradient(90deg, ${BORDER_VIOLET} 1px, transparent 1px),
-            radial-gradient(ellipse at 0% 100%, ${GLOW_VIOLET} 0%, transparent 50%)
-          `,
-          backgroundSize: '60px 60px, 60px 60px, 100% 100%',
-          backgroundPosition: 'center center',
-          backgroundAttachment: 'fixed',
+          backgroundColor: '#FFFFFF',
+          color: '#1A1A2E',
         },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          backgroundColor: '#14141C',
-          border: `1px solid ${BORDER_VIOLET}`,
-          borderRadius: 12,
-          boxShadow: `0 0 24px rgba(${brand.accentBrightRGB},0.12)`,
-          transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
+          backgroundColor: '#FFFFFF',
+          border: `1px solid ${'rgba(0,0,0,0.08)'}`,
+          borderRadius: 14,
+          boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+          transition: 'box-shadow 0.25s ease, border-color 0.25s ease',
           '&:hover': {
-            boxShadow: `0 0 32px rgba(${brand.accentBrightRGB},0.20)`,
-            borderColor: `rgba(${brand.accentRGB},0.40)`,
+            boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
           },
         },
       },
     },
     MuiPaper: {
       styleOverrides: {
-        root: {
-          backgroundImage: 'none',
-        },
+        root: { backgroundImage: 'none' },
       },
     },
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 10,
-          textTransform: 'uppercase',
-          letterSpacing: '0.08em',
+          borderRadius: 12,
+          textTransform: 'none',
+          fontWeight: 600,
+          minHeight: 48,
         },
         contained: {
-          boxShadow: `0 0 16px rgba(${brand.accentBrightRGB},0.20)`,
+          boxShadow: '0 2px 8px rgba(227,24,55,0.20)',
           '&:hover': {
-            boxShadow: `0 0 24px rgba(${brand.accentBrightRGB},0.35)`,
+            boxShadow: '0 4px 14px rgba(227,24,55,0.30)',
+          },
+          '&.Mui-disabled': {
+            backgroundColor: 'rgba(227,24,55,0.35)',
+            color: '#FFFFFF',
           },
         },
         outlined: {
-          borderColor: BORDER_VIOLET,
+          borderColor: BORDER_RED,
           '&:hover': {
-            borderColor: VIOLET,
-            backgroundColor: `rgba(${brand.accentRGB},0.08)`,
+            borderColor: YORK_RED,
+            backgroundColor: RED_DIM08,
           },
         },
       },
@@ -145,41 +107,22 @@ const theme = createTheme({
     MuiBottomNavigation: {
       styleOverrides: {
         root: {
-          backgroundColor: '#14141C',
-          borderTop: `1px solid ${BORDER_VIOLET}`,
+          backgroundColor: '#FFFFFF',
+          borderTop: '1px solid rgba(0,0,0,0.08)',
+          boxShadow: '0 -2px 12px rgba(0,0,0,0.06)',
         },
       },
     },
     MuiBottomNavigationAction: {
       styleOverrides: {
         root: {
-          color: '#8E8EA0',
+          color: '#5C5C6F',
+          minWidth: 'auto',
+          paddingTop: 8,
+          paddingBottom: 8,
           '&.Mui-selected': {
-            color: VIOLET_BRIGHT,
+            color: YORK_RED,
           },
-        },
-      },
-    },
-    MuiTab: {
-      styleOverrides: {
-        root: {
-          fontFamily: '"Space Grotesk", sans-serif',
-          fontWeight: 600,
-          letterSpacing: '0.10em',
-          textTransform: 'uppercase',
-          color: '#8E8EA0',
-          '&.Mui-selected': {
-            color: VIOLET_BRIGHT,
-          },
-        },
-      },
-    },
-    MuiTabs: {
-      styleOverrides: {
-        indicator: {
-          backgroundColor: VIOLET_BRIGHT,
-          height: 3,
-          borderRadius: '3px 3px 0 0',
         },
       },
     },
@@ -187,52 +130,74 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
+            borderRadius: 12,
             '& fieldset': {
-              borderColor: BORDER_VIOLET,
+              borderColor: 'rgba(0,0,0,0.12)',
             },
             '&:hover fieldset': {
-              borderColor: VIOLET,
+              borderColor: YORK_RED,
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: YORK_RED,
             },
           },
+        },
+      },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        root: { borderRadius: 12 },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: { fontWeight: 600, borderRadius: 8 },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#FFFFFF',
+          color: '#1A1A2E',
+          borderBottom: '1px solid rgba(0,0,0,0.08)',
+          boxShadow: 'none',
         },
       },
     },
     MuiDialog: {
       styleOverrides: {
         paper: {
-          backgroundColor: '#1C1B27',
-          border: `1px solid ${BORDER_VIOLET}`,
+          borderRadius: 14,
         },
       },
     },
-    MuiTooltip: {
+    MuiSnackbar: {
       styleOverrides: {
-        tooltip: {
-          backgroundColor: '#1C1B27',
-          border: `1px solid ${BORDER_VIOLET}`,
-          color: '#F5F5FA',
-        },
+        root: { zIndex: 2000 },
+      },
+    },
+    MuiAlert: {
+      styleOverrides: {
+        root: { borderRadius: 12, fontWeight: 500 },
       },
     },
   },
 });
 
-// Export design tokens for use in components (e.g. Recharts)
 export const tokens = {
-  violet: VIOLET,
-  violetBright: VIOLET_BRIGHT,
-  borderViolet: BORDER_VIOLET,
-  glowViolet: GLOW_VIOLET,
-  accentRGB: brand.accentRGB,
-  accentBrightRGB: brand.accentBrightRGB,
-  accentDim08: `rgba(${brand.accentRGB},0.08)`,
-  accentDim12: `rgba(${brand.accentRGB},0.12)`,
-  accentDim15: `rgba(${brand.accentRGB},0.15)`,
-  accentBorder40: `rgba(${brand.accentRGB},0.40)`,
-  surfaceRaised: brand.surfaceRaised,
-  chartGrid: 'rgba(255,255,255,0.05)',
-  chartGradientStart: `rgba(${brand.accentBrightRGB},0.35)`,
-  chartGradientEnd: `rgba(${brand.accentBrightRGB},0)`,
+  yorkRed: YORK_RED,
+  yorkRedBright: YORK_RED_BRIGHT,
+  borderRed: BORDER_RED,
+  redDim08: RED_DIM08,
+  redDim12: RED_DIM12,
+  surface: '#FFFFFF',
+  surfaceAlt: '#F8F8FA',
+  textPrimary: '#1A1A2E',
+  textSecondary: '#5C5C6F',
+  success: '#2E7D32',
+  warning: '#ED6C02',
+  error: '#D32F2F',
+  info: '#0277BD',
 };
 
 export default theme;
