@@ -66,6 +66,8 @@ export default function App() {
         {view === 0 && (
           <Home
             onOpenGapFinder={() => setView(1)}
+            onOpenBookings={() => setView(2)}
+            weeklyCount={bookings.weeklyCount()}
             simulateNoBooking={simulateNoBooking}
             onToggleSimulate={() => setSimulateNoBooking((v) => !v)}
           />
